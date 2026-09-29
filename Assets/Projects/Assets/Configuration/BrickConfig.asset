@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fea2c82a93f24f8f8516bd61026306d, type: 3}
+  m_Name: BrickConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Projects.Scripts.GamePlay.BrickConfig
+  levelConfigs:
+  - maxHealth: 2
+    goldReward: 1
+  - maxHealth: 5
+    goldReward: 3
+  - maxHealth: 8
+    goldReward: 6
+  - maxHealth: 11
+    goldReward: 10
+  - maxHealth: 14
+    goldReward: 15
+  - maxHealth: 18
+    goldReward: 20
+  - maxHealth: 21
+    goldReward: 25
+  - maxHealth: 24
+    goldReward: 30
+  - maxHealth: 27
+    goldReward: 35
+  - maxHealth: 30
+    goldReward: 40
+  - maxHealth: 34
+    goldReward: 45
+  - maxHealth: 38
+    goldReward: 50
+  - maxHealth: 42
+    goldReward: 55
+  - maxHealth: 46
+    goldReward: 60
+  - maxHealth: 50
+    goldReward: 65
+  - maxHealth: 54
+    goldReward: 70
+  - maxHealth: 58
+    goldReward: 75
+  - maxHealth: 62
+    goldReward: 80
+  - maxHealth: 66
+    goldReward: 85
+  - maxHealth: 70
+    goldReward: 90
+  - maxHealth: 75
+    goldReward: 95
+  - maxHealth: 80
+    goldReward: 100
+  - maxHealth: 85
+    goldReward: 105
+  - maxHealth: 90
+    goldReward: 110
+  - maxHealth: 95
+    goldReward: 115
+  - maxHealth: 100
+    goldReward: 120
+  - maxHealth: 105
+    goldReward: 125
+  - maxHealth: 110
+    goldReward: 130
+  - maxHealth: 115
+    goldReward: 135
+  - maxHealth: 120
+    goldReward: 150
+  levelSprites:
+  - {fileID: 21300000, guid: 5d9c9e462c0c34bb7b10dee8acd70029, type: 3}
+  - {fileID: 21300000, guid: 3c50b0ca2134240b699470c9241d7906, type: 3}
+  - {fileID: 21300000, guid: 1b272bd43b5654505ab17fb418e6e175, type: 3}
+  - {fileID: 21300000, guid: aad681785f54d48ef80ea5fa92f45e3c, type: 3}
+  - {fileID: 21300000, guid: 6b0d42533e4674ae68e495aa69270ae6, type: 3}
+  - {fileID: 21300000, guid: 90aa9dc27449a4ec492d62cf5c8148c6, type: 3}
+  - {fileID: 21300000, guid: 0def1fe2cc50a468bb1b3b6329a73aee, type: 3}
+  - {fileID: 21300000, guid: dccbbaac4cda4461f9d001b9c110825a, type: 3}
+  - {fileID: 21300000, guid: de83f5a742754456e85956de9c6a8c2e, type: 3}
+  - {fileID: 21300000, guid: 5c1fe3f629936450cb86f84133a6ccee, type: 3}
+  - {fileID: 21300000, guid: fbfa67369e7504f5681a1fe692cf6d9d, type: 3}
+  - {fileID: 21300000, guid: 5102f07d85fa745e6a3275e0ad355bda, type: 3}
+  - {fileID: 21300000, guid: 22af41e77aeff4b57aef6af00ac2d408, type: 3}
+  - {fileID: 21300000, guid: 0aa76ac60891e4a00bf32827f48414a5, type: 3}
+  - {fileID: 21300000, guid: 1be110fdbef8d41eebd4ecf47b7c60fa, type: 3}
+  - {fileID: 21300000, guid: 51dead17173a94d4caee502c3dff45b1, type: 3}
+  - {fileID: 21300000, guid: 054e1ef6e4b5d484db8276f54cd5913a, type: 3}
+  - {fileID: 21300000, guid: 613dcd83a48744512acc8b64e1645dd7, type: 3}
+  - {fileID: 21300000, guid: 63e10dbdf98574cf0b201a7adfcd106f, type: 3}
+  - {fileID: 21300000, guid: 6597f0358da864065a97c264124d390c, type: 3}
+  - {fileID: 21300000, guid: 129bbe442124c41faa56ac4d1cf56e39, type: 3}
+  - {fileID: 21300000, guid: 222fd3a8f6a204967aca5dccaa596cf9, type: 3}
+  - {fileID: 21300000, guid: 5d78a01246fd64c5fa814641ad048f6e, type: 3}
+  - {fileID: 21300000, guid: a644ee7ad15d3465492a0b31c456123c, type: 3}
+  - {fileID: 21300000, guid: eb0c72763277242a6a63e2a7b939b9ee, type: 3}
+  - {fileID: 21300000, guid: a6138be5689f24f2da001fabef48b188, type: 3}
+  - {fileID: 21300000, guid: 0ca5596235729425d9c518f6f42ac02c, type: 3}
+  - {fileID: 21300000, guid: a36a13d2da56943b4aa512528c9a00af, type: 3}
+  - {fileID: 21300000, guid: 2d0e64e12739244d1b0f7865a713a7e8, type: 3}
+  - {fileID: 21300000, guid: f13d9877e2107429a8ce5eb5cbaa202b, type: 3}
+  goldBrickSprite: {fileID: 21300000, guid: 5e07f9c2b7d6c4ea1b112becf5f67582, type: 3}
+  itemBrickSprite: {fileID: 21300000, guid: 8adcba1abcee84daab40a3b1a9d32e2f, type: 3}
+  crackSprites:
+  - {fileID: 21300000, guid: 60ed2eded9d4143f5a96ad7404100684, type: 3}
+  - {fileID: 21300000, guid: d850c3b8105e14d249acefb80642de21, type: 3}
+  - {fileID: 21300000, guid: 9f3714230763240d9915fc5da65e6b5f, type: 3}
+  debrisSprites:
+  - {fileID: 21300000, guid: c3a7833c373514fe495cdff73879e0d9, type: 3}
+  - {fileID: 21300000, guid: 133d26ad2a9094ee1974cf81aa79171e, type: 3}
+  - {fileID: 21300000, guid: 6db720e3677fb40b7ae212b30d5803fb, type: 3}
+  minimumDebris: 12
+  maximumDebris: 16
+  impactDuration: 0.2
+  impactFlashAlpha: 0.82
+  impactFlashColor: {r: 1, g: 1, b: 1, a: 1}
+  impactFlashDurationMultiplier: 0.72
+  impactSquashPhase: 0.42
+  impactSquashX: 1.15
+  impactSquashY: 0.82
+  impactReboundX: 0.95
+  impactReboundY: 1.08
+  debrisSpawnSpreadX: 0.42
+  debrisSpawnSpreadY: 0.25
+  debrisSpeed: 2.1
+  finalBurstDebrisSpeed: 3.8
+  debrisLifetime: 0.52
+  finalBurstDebrisLifetime: 0.85
+  debrisMinimumSize: 0.1
+  debrisMaximumSize: 0.16
+  debrisVerticalSpeedMinimum: 0.35
+  debrisVerticalSpeedMaximum: 1.35
+  debrisGravity: 5
+  debrisSpinSpeed: 540
+  finalBurstFlashAlpha: 0.82
+  finalBurstFlashColor: {r: 1, g: 0.96, b: 0.7, a: 1}
+  finalBurstFlashDuration: 0.23
+  finalBurstFlashStartScale: 1.16
+  finalBurstFlashEndScale: 1.42
+  shockwaveDuration: 0.32
+  shockwaveAlpha: 0.65
+  shockwaveColor: {r: 1, g: 0.92, b: 0.55, a: 1}
+  shockwaveStartRadius: 0.12
+  shockwaveEndRadius: 1.05
+  shockwaveStartWidth: 0.055
+  shockwaveEndWidth: 0.01

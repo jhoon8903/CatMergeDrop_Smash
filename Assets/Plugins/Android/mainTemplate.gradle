@@ -1,0 +1,92 @@
+apply plugin: 'com.android.library'
+apply from: '../shared/keepUnitySymbols.gradle'
+apply from: '../shared/common.gradle'
+**APPLY_PLUGINS**
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+// Android Resolver Dependencies Start
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4' // Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:12
+    implementation 'androidx.fragment:fragment:1.7.1' // Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:22
+    implementation 'androidx.lifecycle:lifecycle-process:2.6.2' // Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:17
+    implementation 'com.google.ads.mediation:facebook:6.22.0.0' // Packages/com.google.ads.mobile.mediation.metaaudiencenetwork/source/plugin/Assets/GoogleMobileAds/Mediation/MetaAudienceNetwork/Editor/Dependencies.xml:24
+    implementation 'com.google.ads.mediation:imobile:2.3.2.4' // Packages/com.google.ads.mobile.mediation.imobile/source/plugin/Assets/GoogleMobileAds/Mediation/IMobile/Editor/IMobileMediationDependencies.xml:25
+    implementation 'com.google.ads.mediation:inmobi:11.4.0.0' // Packages/com.google.ads.mobile.mediation.inmobi/source/plugin/Assets/GoogleMobileAds/Mediation/InMobi/Editor/InMobiMediationDependencies.xml:24
+    implementation 'com.google.ads.mediation:ironsource:9.5.0.0' // Packages/com.google.ads.mobile.mediation.ironsource/source/plugin/Assets/GoogleMobileAds/Mediation/IronSource/Editor/IronSourceMediationDependencies.xml:24
+    implementation 'com.google.ads.mediation:line:3.1.0.0' // Packages/com.google.ads.mobile.mediation.line/GoogleMobileAds/Mediation/Line/Editor/Dependencies.xml:24
+    implementation 'com.google.ads.mediation:maio:2.0.9.0' // Packages/com.google.ads.mobile.mediation.maio/source/plugin/Assets/GoogleMobileAds/Mediation/Maio/Editor/Dependencies.xml:25
+    implementation 'com.google.ads.mediation:mintegral:17.1.71.0' // Packages/com.google.ads.mobile.mediation.mintegral/source/plugin/Assets/GoogleMobileAds/Mediation/Mintegral/Editor/Dependencies.xml:25
+    implementation 'com.google.ads.mediation:moloco:4.11.0.0' // Packages/com.google.ads.mobile.mediation.moloco/source/plugin/Assets/GoogleMobileAds/Mediation/Moloco/Editor/Dependencies.xml:8
+    implementation 'com.google.ads.mediation:pangle:8.2.0.4.0' // Packages/com.google.ads.mobile.mediation.pangle/source/plugin/Assets/GoogleMobileAds/Mediation/Pangle/Editor/Dependencies.xml:25
+    implementation 'com.google.ads.mediation:pubmatic:5.2.0.0' // Packages/com.google.ads.mobile.mediation.pubmatic/source/plugin/Assets/GoogleMobileAds/Mediation/PubMatic/Editor/Dependencies.xml:25
+    implementation 'com.google.ads.mediation:unity:4.19.0.0' // Packages/com.google.ads.mobile.mediation.unity/source/plugin/Assets/GoogleMobileAds/Mediation/UnityAds/Editor/UnityMediationDependencies.xml:25
+    implementation 'com.google.ads.mediation:vungle:7.7.4.0' // Packages/com.google.ads.mobile.mediation.liftoffmonetize/GoogleMobileAds/Mediation/LiftoffMonetize/Editor/Dependencies.xml:24
+    implementation 'com.google.android.gms:play-services-ads:25.4.0' // Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:7
+    implementation 'com.google.android.gms:play-services-base:18.10.1' // Packages/com.google.firebase.database/Firebase/Editor/DatabaseDependencies.xml:20
+    implementation 'com.google.android.ump:user-messaging-platform:4.0.0' // Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleUmpDependencies.xml:7
+    implementation 'com.google.firebase:firebase-analytics:23.2.0' // Packages/com.google.firebase.analytics/Firebase/Editor/AnalyticsDependencies.xml:16
+    implementation 'com.google.firebase:firebase-analytics-unity:13.16.0' // Packages/com.google.firebase.analytics/Firebase/Editor/AnalyticsDependencies.xml:21
+    implementation 'com.google.firebase:firebase-app-unity:13.16.0' // Packages/com.google.firebase.app/Firebase/Editor/AppDependencies.xml:25
+    implementation 'com.google.firebase:firebase-auth:24.2.0' // Packages/com.google.firebase.auth/Firebase/Editor/AuthDependencies.xml:16
+    implementation 'com.google.firebase:firebase-auth-unity:13.16.0' // Packages/com.google.firebase.auth/Firebase/Editor/AuthDependencies.xml:23
+    implementation 'com.google.firebase:firebase-common:22.2.0' // Packages/com.google.firebase.app/Firebase/Editor/AppDependencies.xml:16
+    implementation 'com.google.firebase:firebase-crashlytics-ndk:20.1.0' // Packages/com.google.firebase.crashlytics/Firebase/Editor/CrashlyticsDependencies.xml:16
+    implementation 'com.google.firebase:firebase-crashlytics-unity:13.16.0' // Packages/com.google.firebase.crashlytics/Firebase/Editor/CrashlyticsDependencies.xml:23
+    implementation 'com.google.firebase:firebase-database:22.0.1' // Packages/com.google.firebase.database/Firebase/Editor/DatabaseDependencies.xml:16
+    implementation 'com.google.firebase:firebase-database-unity:13.16.0' // Packages/com.google.firebase.database/Firebase/Editor/DatabaseDependencies.xml:25
+    implementation 'com.google.firebase:firebase-firestore:26.6.0' // Packages/com.google.firebase.firestore/Firebase/Editor/FirestoreDependencies.xml:16
+    implementation 'com.google.firebase:firebase-firestore-unity:13.16.0' // Packages/com.google.firebase.firestore/Firebase/Editor/FirestoreDependencies.xml:23
+    implementation 'com.unity3d.ads:unity-ads:4.19.0' // Packages/com.google.ads.mobile.mediation.unity/source/plugin/Assets/GoogleMobileAds/Mediation/UnityAds/Editor/UnityMediationDependencies.xml:33
+// Android Resolver Dependencies End
+**DEPS**}
+
+// Android Resolver Exclusions Start
+android {
+  packaging {
+      exclude ('/lib/armeabi/*' + '*')
+      exclude ('/lib/armeabi-v7a/*' + '*')
+      exclude ('/lib/mips/*' + '*')
+      exclude ('/lib/mips64/*' + '*')
+      exclude ('/lib/x86/*' + '*')
+      exclude ('/lib/x86_64/*' + '*')
+  }
+}
+// Android Resolver Exclusions End
+android {
+    namespace "com.unity3d.player"
+    ndkPath "**NDKPATH**"
+    ndkVersion "**NDKVERSION**"
+
+    compileSdk **APIVERSION**
+    buildToolsVersion = "**BUILDTOOLS**"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        minSdk **MINSDK**
+        targetSdk **TARGETSDK**
+        ndk {
+            abiFilters **ABIFILTERS**
+            debugSymbolLevel **DEBUGSYMBOLLEVEL**
+        }
+        versionCode **VERSIONCODE**
+        versionName '**VERSIONNAME**'
+        consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD**
+**DEFAULT_CONFIG_SETUP**
+    }
+
+    lint {
+        abortOnError false
+    }
+
+    androidResources {
+        noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(', ')
+        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }**PACKAGING**
+}
+**IL_CPP_BUILD_SETUP**
+**SOURCE_BUILD_SETUP**
+**EXTERNAL_SOURCES**

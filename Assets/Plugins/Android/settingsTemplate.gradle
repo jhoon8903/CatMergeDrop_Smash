@@ -1,0 +1,57 @@
+pluginManagement {
+    repositories {
+        **ARTIFACTORYREPOSITORY**
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+include ':launcher', ':unityLibrary'
+**INCLUDES**
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        **ARTIFACTORYREPOSITORY**
+        google()
+        mavenCentral()
+// Android Resolver Repos Start
+        def unityProjectPath = $/file:///**DIR_UNITYPROJECT**/$.replace("\\", "/")
+        maven {
+            url (unityProjectPath + "/Assets/GeneratedLocalRepo/Firebase/m2repository") // Packages/com.google.firebase.firestore/Firebase/Editor/FirestoreDependencies.xml:23, Packages/com.google.firebase.app/Firebase/Editor/AppDependencies.xml:25, Packages/com.google.firebase.auth/Firebase/Editor/AuthDependencies.xml:23, Packages/com.google.firebase.crashlytics/Firebase/Editor/CrashlyticsDependencies.xml:23, Packages/com.google.firebase.database/Firebase/Editor/DatabaseDependencies.xml:25, Packages/com.google.firebase.analytics/Firebase/Editor/AnalyticsDependencies.xml:21
+        }
+        maven {
+            url "https://maven.google.com/" // Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:7, Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:12, Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:17, Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:22, Packages/com.google.ads.mobile/GoogleMobileAds/Editor/GoogleUmpDependencies.xml:7
+        }
+        maven {
+            url "https://repo.maven.apache.org/maven2/" // Packages/com.google.ads.mobile.mediation.imobile/source/plugin/Assets/GoogleMobileAds/Mediation/IMobile/Editor/IMobileMediationDependencies.xml:25, Packages/com.google.ads.mobile.mediation.inmobi/source/plugin/Assets/GoogleMobileAds/Mediation/InMobi/Editor/InMobiMediationDependencies.xml:24, Packages/com.google.ads.mobile.mediation.liftoffmonetize/GoogleMobileAds/Mediation/LiftoffMonetize/Editor/Dependencies.xml:24, Packages/com.google.ads.mobile.mediation.line/GoogleMobileAds/Mediation/Line/Editor/Dependencies.xml:24, Packages/com.google.ads.mobile.mediation.maio/source/plugin/Assets/GoogleMobileAds/Mediation/Maio/Editor/Dependencies.xml:25, Packages/com.google.ads.mobile.mediation.metaaudiencenetwork/source/plugin/Assets/GoogleMobileAds/Mediation/MetaAudienceNetwork/Editor/Dependencies.xml:24, Packages/com.google.ads.mobile.mediation.mintegral/source/plugin/Assets/GoogleMobileAds/Mediation/Mintegral/Editor/Dependencies.xml:25, Packages/com.google.ads.mobile.mediation.moloco/source/plugin/Assets/GoogleMobileAds/Mediation/Moloco/Editor/Dependencies.xml:8, Packages/com.google.ads.mobile.mediation.pangle/source/plugin/Assets/GoogleMobileAds/Mediation/Pangle/Editor/Dependencies.xml:25, Packages/com.google.ads.mobile.mediation.pubmatic/source/plugin/Assets/GoogleMobileAds/Mediation/PubMatic/Editor/Dependencies.xml:25, Packages/com.google.ads.mobile.mediation.unity/source/plugin/Assets/GoogleMobileAds/Mediation/UnityAds/Editor/UnityMediationDependencies.xml:25, Packages/com.google.ads.mobile.mediation.unity/source/plugin/Assets/GoogleMobileAds/Mediation/UnityAds/Editor/UnityMediationDependencies.xml:33
+        }
+        maven {
+            url "https://android-sdk.is.com/" // Packages/com.google.ads.mobile.mediation.ironsource/source/plugin/Assets/GoogleMobileAds/Mediation/IronSource/Editor/IronSourceMediationDependencies.xml:24
+        }
+        maven {
+            url "https://dl.google.com/dl/android/maven2/" // Packages/com.google.ads.mobile.mediation.imobile/source/plugin/Assets/GoogleMobileAds/Mediation/IMobile/Editor/IMobileMediationDependencies.xml:25, Packages/com.google.ads.mobile.mediation.inmobi/source/plugin/Assets/GoogleMobileAds/Mediation/InMobi/Editor/InMobiMediationDependencies.xml:24, Packages/com.google.ads.mobile.mediation.ironsource/source/plugin/Assets/GoogleMobileAds/Mediation/IronSource/Editor/IronSourceMediationDependencies.xml:24, Packages/com.google.ads.mobile.mediation.liftoffmonetize/GoogleMobileAds/Mediation/LiftoffMonetize/Editor/Dependencies.xml:24, Packages/com.google.ads.mobile.mediation.line/GoogleMobileAds/Mediation/Line/Editor/Dependencies.xml:24, Packages/com.google.ads.mobile.mediation.maio/source/plugin/Assets/GoogleMobileAds/Mediation/Maio/Editor/Dependencies.xml:25, Packages/com.google.ads.mobile.mediation.metaaudiencenetwork/source/plugin/Assets/GoogleMobileAds/Mediation/MetaAudienceNetwork/Editor/Dependencies.xml:24, Packages/com.google.ads.mobile.mediation.mintegral/source/plugin/Assets/GoogleMobileAds/Mediation/Mintegral/Editor/Dependencies.xml:25, Packages/com.google.ads.mobile.mediation.moloco/source/plugin/Assets/GoogleMobileAds/Mediation/Moloco/Editor/Dependencies.xml:8, Packages/com.google.ads.mobile.mediation.pangle/source/plugin/Assets/GoogleMobileAds/Mediation/Pangle/Editor/Dependencies.xml:25, Packages/com.google.ads.mobile.mediation.pubmatic/source/plugin/Assets/GoogleMobileAds/Mediation/PubMatic/Editor/Dependencies.xml:25, Packages/com.google.ads.mobile.mediation.unity/source/plugin/Assets/GoogleMobileAds/Mediation/UnityAds/Editor/UnityMediationDependencies.xml:25
+        }
+        maven {
+            url "https://imobile.github.io/adnw-sdk-android/" // Packages/com.google.ads.mobile.mediation.imobile/source/plugin/Assets/GoogleMobileAds/Mediation/IMobile/Editor/IMobileMediationDependencies.xml:25
+        }
+        maven {
+            url "https://imobile-maio.github.io/maven/" // Packages/com.google.ads.mobile.mediation.maio/source/plugin/Assets/GoogleMobileAds/Mediation/Maio/Editor/Dependencies.xml:25
+        }
+        maven {
+            url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea" // Packages/com.google.ads.mobile.mediation.mintegral/source/plugin/Assets/GoogleMobileAds/Mediation/Mintegral/Editor/Dependencies.xml:25
+        }
+        maven {
+            url "https://artifact.bytedance.com/repository/pangle/" // Packages/com.google.ads.mobile.mediation.pangle/source/plugin/Assets/GoogleMobileAds/Mediation/Pangle/Editor/Dependencies.xml:25
+        }
+        maven {
+            url "https://repo.pubmatic.com/artifactory/public-repos/" // Packages/com.google.ads.mobile.mediation.pubmatic/source/plugin/Assets/GoogleMobileAds/Mediation/PubMatic/Editor/Dependencies.xml:25
+        }
+        mavenLocal()
+// Android Resolver Repos End
+        flatDir {
+            dirs "${project(':unityLibrary').projectDir}/libs"
+        }
+    }
+}

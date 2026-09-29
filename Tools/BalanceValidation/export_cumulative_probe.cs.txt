@@ -1,0 +1,42 @@
+var b=UnityEditor.AssetDatabase.LoadAssetAtPath<Projects.Scripts.GamePlay.Configs.StageBalanceConfig>("Assets/Projects/Assets/Configuration/StageBalanceConfig.asset");
+var c=UnityEditor.AssetDatabase.LoadAssetAtPath<Projects.Scripts.GamePlay.Configs.CatConfig>("Assets/Projects/Assets/Configuration/CatConfig.asset");
+var k=UnityEditor.AssetDatabase.LoadAssetAtPath<Projects.Scripts.GamePlay.Configs.BrickConfig>("Assets/Projects/Assets/Configuration/BrickConfig.asset");
+var output=new System.Collections.Generic.List<object>();
+using(var w=new Unity.Entities.World("BalanceValidationOracle")){
+var m=w.EntityManager;
+var fall=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.FallSystem>(w);
+var hit=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.GateCollisionSystem>(w);
+var damage=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.DamageAndBreakSystem>(w);
+var row=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.DropRowAdvanceSystem>(w);
+var result=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.DropRunResultSystem>(w);
+var clean=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.BreakEventCleanupSystem>(w);
+foreach(int n in new int[]{1,4,43,100,500,1000}){
+var d=b.GetStageDefinition(n);int expected=Projects.Scripts.GamePlay.Configs.StageBalanceConfig.ExpectedCatLevelForStage(n);
+for(int lane=0;lane<d.BoardColumns;lane++){
+var cats=new System.Collections.Generic.List<Projects.Scripts.GamePlay.Board.BoardCatSnapshot>();
+for(int i=0;i<3;i++)cats.Add(new Projects.Scripts.GamePlay.Board.BoardCatSnapshot(i*d.BoardColumns+lane,lane,i,System.Math.Max(1,expected-1)));
+var stage=Projects.Scripts.GamePlay.Drop.DropStageFactory.Create(m,k,b,n);
+var drops=new System.Collections.Generic.List<object>();
+for(int attempt=1;attempt<=4;attempt++){
+Projects.Scripts.GamePlay.Drop.DropStageFactory.RequestDrop(m,stage,c,cats.ToArray());int steps=0;
+for(int f=0;f<480;f++){
+w.SetTime(new Unity.Core.TimeData(f*.05,.05f));clean.Update(w.Unmanaged);fall.Update(w.Unmanaged);hit.Update(w.Unmanaged);damage.Update(w.Unmanaged);row.Update(w.Unmanaged);result.Update(w.Unmanaged);steps=f+1;
+var state=m.GetComponentData<Projects.Scripts.GamePlay.Drop.Ecs.Components.Stage>(stage);
+if(state.Phase==Projects.Scripts.GamePlay.Drop.Ecs.Enums.Phase.Won||state.Phase==Projects.Scripts.GamePlay.Drop.Ecs.Enums.Phase.Lost)break;
+}
+var end=m.GetComponentData<Projects.Scripts.GamePlay.Drop.Ecs.Components.Stage>(stage);
+var hp=Projects.Scripts.GamePlay.Drop.DropStageFactory.CaptureBrickHealth(m,stage);
+int total=0;foreach(int value in hp)total+=value;
+drops.Add(new {drop=attempt,phase=end.Phase.ToString(),gold=end.GoldEarned,remaining_health=total});
+if(end.Phase==Projects.Scripts.GamePlay.Drop.Ecs.Enums.Phase.Won)break;
+}
+output.Add(new {stage=n,lane=lane,cat_level=System.Math.Max(1,expected-1),drops=drops});
+Projects.Scripts.GamePlay.Drop.DropStageFactory.Destroy(m,stage);
+}
+}
+}
+var path=System.IO.Path.Combine(UnityEngine.Application.dataPath,"../Library/StageGeneration/cumulative-drop-probe.json");
+System.Type jsonType=null; foreach(var assembly in System.AppDomain.CurrentDomain.GetAssemblies()){jsonType=assembly.GetType("Newtonsoft.Json.JsonConvert");if(jsonType!=null)break;}
+var serialize=jsonType.GetMethod("SerializeObject",new System.Type[]{typeof(object)});
+System.IO.File.WriteAllText(path,(string)serialize.Invoke(null,new object[]{output}));
+return "Cumulative probe exported "+output.Count+" actual ECS cases to "+path;

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0168c4b228491d9bda3213e1db7718, type: 3}
+  m_Name: DropCameraConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Projects.Scripts.GamePlay.Configs.DropCameraConfig
+  dropZoomMultiplier: 1.18
+  minimumDropSize: 5.1
+  extendedDropStage: 10
+  extendedDropSizeAddition: 0.55
+  positionSmoothTime: 0.18
+  targetSwitchSmoothTime: 0.5
+  targetSwitchDampingDuration: 0.8
+  maximumCameraSpeed: 18
+  sizeSmoothTime: 0.28
+  fallingViewSize: 3.7
+  fallingLead: 1.15
+  mergeFramingMargin: 0.35
+  minimumMergeSize: 3.2

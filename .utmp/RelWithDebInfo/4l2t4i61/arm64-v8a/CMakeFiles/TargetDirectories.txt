@@ -1,0 +1,8 @@
+/Volumes/Dock_SSD/Projects/CatMergeDrop_Smash/.utmp/RelWithDebInfo/4l2t4i61/arm64-v8a/CMakeFiles/edit_cache.dir
+/Volumes/Dock_SSD/Projects/CatMergeDrop_Smash/.utmp/RelWithDebInfo/4l2t4i61/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Volumes/Dock_SSD/Projects/CatMergeDrop_Smash/.utmp/RelWithDebInfo/4l2t4i61/arm64-v8a/GameActivity/CMakeFiles/game.dir
+/Volumes/Dock_SSD/Projects/CatMergeDrop_Smash/.utmp/RelWithDebInfo/4l2t4i61/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+/Volumes/Dock_SSD/Projects/CatMergeDrop_Smash/.utmp/RelWithDebInfo/4l2t4i61/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
+/Volumes/Dock_SSD/Projects/CatMergeDrop_Smash/.utmp/RelWithDebInfo/4l2t4i61/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+/Volumes/Dock_SSD/Projects/CatMergeDrop_Smash/.utmp/RelWithDebInfo/4l2t4i61/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+/Volumes/Dock_SSD/Projects/CatMergeDrop_Smash/.utmp/RelWithDebInfo/4l2t4i61/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

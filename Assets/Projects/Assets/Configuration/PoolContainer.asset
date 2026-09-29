@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3db09611a7d4c6eae2c8e100a91b884, type: 3}
+  m_Name: PoolContainer
+  m_EditorClassIdentifier: Assembly-CSharp::Framework.Poolable.Scriptable.EntityPoolContainer
+  entries:
+  - id: drop-brick
+    prefab: {fileID: 5984879549611277451, guid: 2e39f25daedba44049162440bd8bfb31, type: 3}
+    initialCapacity: 60
+    maxCapacity: 60
+  - id: drop-cat
+    prefab: {fileID: 7571454681237144952, guid: 4aa260d561ac1468d821f1c178df8d55, type: 3}
+    initialCapacity: 18
+    maxCapacity: 18

@@ -1,0 +1,44 @@
+var b=UnityEditor.AssetDatabase.LoadAssetAtPath<Projects.Scripts.GamePlay.Configs.StageBalanceConfig>("Assets/Projects/Assets/Configuration/StageBalanceConfig.asset");
+var c=UnityEditor.AssetDatabase.LoadAssetAtPath<Projects.Scripts.GamePlay.Configs.CatConfig>("Assets/Projects/Assets/Configuration/CatConfig.asset");
+var k=UnityEditor.AssetDatabase.LoadAssetAtPath<Projects.Scripts.GamePlay.Configs.BrickConfig>("Assets/Projects/Assets/Configuration/BrickConfig.asset");
+var output=new System.Collections.Generic.List<object>();
+using(var w=new Unity.Entities.World("BalanceValidationOracle")){
+var m=w.EntityManager;
+var fall=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.FallSystem>(w);
+var hit=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.GateCollisionSystem>(w);
+var damage=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.DamageAndBreakSystem>(w);
+var row=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.DropRowAdvanceSystem>(w);
+var result=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.DropRunResultSystem>(w);
+var clean=Unity.Entities.WorldExtensions.CreateSystem<Projects.Scripts.GamePlay.Drop.Ecs.Systems.BreakEventCleanupSystem>(w);
+foreach(int n in new int[]{1,2,4,8,16,32,43,44,64,100,256,500,512,1000}){
+var d=b.GetStageDefinition(n);int expected=Projects.Scripts.GamePlay.Configs.StageBalanceConfig.ExpectedCatLevelForStage(n);
+for(int policy=0;policy<7;policy++){
+var cats=new System.Collections.Generic.List<Projects.Scripts.GamePlay.Board.BoardCatSnapshot>();
+var inputs=new System.Collections.Generic.List<object>();
+int lane=Projects.Editor.StageGeneration.StageBulkGenerator.RewardLaneForStage(n,d.BoardColumns);
+int count=policy<2?1:policy<5?3:d.BoardColumns*3;
+for(int i=0;i<count;i++){
+int col=policy<5?lane:i%d.BoardColumns;int rr=policy<5?i:i/d.BoardColumns;
+int level=policy==0?System.Math.Max(1,expected-1):policy==1?expected+3:policy==2?expected:policy==3?expected+1:policy==4?System.Math.Max(1,expected+i-1):policy==5?System.Math.Max(1,expected+i%3-1):25;
+int slot=rr*d.BoardColumns+col;
+cats.Add(new Projects.Scripts.GamePlay.Board.BoardCatSnapshot(slot,col,rr,level));
+inputs.Add(new {slot=slot,column=col,row=rr,level=level});
+}
+var stage=Projects.Scripts.GamePlay.Drop.DropStageFactory.Create(m,k,b,n);
+Projects.Scripts.GamePlay.Drop.DropStageFactory.RequestDrop(m,stage,c,cats.ToArray());int steps=0;
+for(int f=0;f<480;f++){
+w.SetTime(new Unity.Core.TimeData(f*.05,.05f));clean.Update(w.Unmanaged);fall.Update(w.Unmanaged);hit.Update(w.Unmanaged);damage.Update(w.Unmanaged);row.Update(w.Unmanaged);result.Update(w.Unmanaged);steps=f+1;
+var state=m.GetComponentData<Projects.Scripts.GamePlay.Drop.Ecs.Components.Stage>(stage);
+if(state.Phase==Projects.Scripts.GamePlay.Drop.Ecs.Enums.Phase.Won||state.Phase==Projects.Scripts.GamePlay.Drop.Ecs.Enums.Phase.Lost)break;
+}
+var end=m.GetComponentData<Projects.Scripts.GamePlay.Drop.Ecs.Components.Stage>(stage);
+output.Add(new {stage=n,policy=policy,cats=inputs,won=end.Phase==Projects.Scripts.GamePlay.Drop.Ecs.Enums.Phase.Won,phase=end.Phase.ToString(),normal_gold=end.GoldEarned,gold_tickets=end.GoldTicketsEarned,item_tickets=end.ItemsEarned,steps=steps});
+Projects.Scripts.GamePlay.Drop.DropStageFactory.Destroy(m,stage);
+}
+}
+}
+var path=System.IO.Path.Combine(UnityEngine.Application.dataPath,"../Library/StageGeneration/balance-oracle.json");
+System.Type jsonType=null; foreach(var assembly in System.AppDomain.CurrentDomain.GetAssemblies()){jsonType=assembly.GetType("Newtonsoft.Json.JsonConvert");if(jsonType!=null)break;}
+var serialize=jsonType.GetMethod("SerializeObject",new System.Type[]{typeof(object)});
+System.IO.File.WriteAllText(path,(string)serialize.Invoke(null,new object[]{output}));
+return "Exported "+output.Count+" actual ECS cases to "+path;
